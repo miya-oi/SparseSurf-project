@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SparseSurf: Sparse-View 3D Gaussian Splatting for Surface Reconstruction">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SparseSurf: Sparse-View 3D Gaussian Splatting for Surface Reconstruction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<style>
+.link-block.disabled a {
+  background-color: #ccc;     /* 灰底 */
+  color: #666;                /* 灰字 */
+  pointer-events: none;       /* 禁止点击 */
+  border: none;
+}
+.link-block.disabled i {
+  color: #666;                /* 图标也灰掉 */
+}
+</style>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">SparseSurf: Sparse-View 3D Gaussian Splatting for Surface Reconstruction</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=9WT89kAAAAAJ&hl=zh-CN" target="_blank">
+                Meiying Gu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?user=WeRMtW4AAAAJ&hl=en" target="_blank"> -->
+              <a href="https://jiaw-z.github.io/" target="_blank">
+                Jiawei Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?hl=en&user=XG-o7LUAAAAJ" target="_blank"> -->
+              <a href="https://fictionarry.github.io" target="_blank">  
+                Jiahe Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="https://scholar.google.com/citations?user=3PURN9QAAAAJ&hl=zh-CN&authuser=1&oi=ao" target="_blank"> -->
+              <a href="https://xiaohanyu-gu.github.io/" target="_blank"></a>
+                Xiaohan Yu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=NZRs4FkAAAAJ&hl=zh-CN" target="_blank">
+                Haonan Luo</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Jin_Zheng1" target="_blank">
+                Jin Zheng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=k6l1vZIAAAAJ&hl=en" target="_blank">
+                Xiao Bai</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Beihang University,</span>
+            <span class="author-block"><sup>2</sup>Macquarie University,</span>
+            <span class="author-block"><sup>3</sup>Southwest Jiaotong University,</span>
+          </div>
+
+          <div class="is-size-5">
+            <span style="color: rgb(165, 165, 165);">AAAI 2026</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block disabled">
+                <a href="https://arxiv.org/pdf/2405.12110" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block disabled">
+                <a href="https://arxiv.org/abs/2405.12110" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block disabled">
+                <a href="https://youtu.be/O83v9Wrn3c4" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block disabled">
+                <a href="https://github.com/jiaw-z/CoR-GS" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <img src="./static/images/teaser.png"  style="max-width:50%; display:block; margin:0 auto; height:auto;" class="center"> </img>
+      <h2 class="subtitle has-text-centered">
+        Comparison of sparse-view novel-view synthesis and surface reconstruction on DTU and Mip-NeRF360. Our SparseSurf achieves the best performance on both surface reconstruction and rendering in sparse-view setting. 
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-counter">
+          <video poster="" id="counter" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/counter.mkv" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-kitchen">
+          <video poster="" id="kitchen" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/kitchen.mkv" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-bonsai">
+          <video poster="" id="bonsai" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/bonsai.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-barn">
+          <video poster="" id="barn" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/barn.mkv" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-caterpillar">
+          <video poster="" id="caterpillar" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/caterpillar.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-truck">
+          <video poster="" id="truck" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/truck.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          Recent advances in optimizing Gaussian Splatting for scene geometry have enabled efficient reconstruction of detailed surfaces from images. However, when input views are sparse, such optimization is prone to overfitting, leading to suboptimal reconstruction quality. Existing approaches address this challenge by employing flattened Gaussian primitives to better fit surface geometry, combined with depth regularization to alleviate geometric ambiguities under limited viewpoints. Nevertheless, the increased anisotropy inherent in flattened Gaussians exacerbates overfitting in sparse-view scenarios, hindering accurate surface fitting and degrading novel view synthesis performance. In this paper, we propose SparseSurf, a method that reconstructs more accurate and detailed surfaces while preserving high-quality novel view rendering. Our key insight is to introduce Stereo Geometry-Texture Alignment, which bridges rendering quality and geometry estimation, thereby jointly enhancing both surface reconstruction and view synthesis. In addition, we present a Pseudo-Feature Enhanced Geometry Consistency that enforces multi-view geometric consistency by incorporating both training and unseen views, effectively mitigating overfitting caused by sparse supervision. Extensive experiments on the DTU, BlendedMVS, and Mip-NeRF360 datasets demonstrate that our method achieves the state-of-the-art performance.
+          <!-- We present Eve3D, a novel framework for dense 3D reconstruction based on 3D Gaussian Splatting (3DGS). While most existing methods rely on imperfect priors derived from pre-trained vision models, Eve3D fully leverages these priors by jointly optimizing both them and the 3DGS backbone. This joint optimization creates a mutually reinforcing cycle: the priors enhance the quality of 3DGS, which in turn refines the priors, further improving the reconstruction. Additionally, Eve3D introduces a novel optimization step based on bundle adjustment, overcoming the limitations of the highly local supervision in standard 3DGS pipelines. Eve3D achieves state-of-the-art results in surface reconstruction and novel view synthesis on Tanks \& Temples, DTU, and Mip-NeRF360 datasets. while retaining fast convergence, highlighting an unprecedented trade-off between accuracy and speed. -->
+
+          <!-- <p>
+            3D Gaussian Splatting (3DGS) creates a radiance field consisting of 3D Gaussians to represent a scene. With sparse training views, 3DGS easily suffers from overfitting, negatively impacting the reconstruction quality.</p>
+          <p>
+            This paper introduces a new co-regularization perspective for improving sparse-view 3DGS. When training two 3D Gaussian radiance fields with the same sparse views of a scene, we observe that the two radiance fields exhibit \textit{point disagreement} and \textit{rendering disagreement} that can unsupervisedly predict reconstruction quality, stemming from the sampling implementation in densification. We further quantify the point disagreement and rendering disagreement by evaluating the registration between Gaussians' point representations and calculating differences in their rendered pixels. The empirical study demonstrates the negative correlation between the two disagreements and accurate reconstruction, which allows us to identify inaccurate reconstruction without accessing ground-truth information.
+          </p>
+          <p>
+            Based on the study, we propose CoR-GS, which identifies and suppresses inaccurate reconstruction based on the two disagreements: (\romannumeral1) Co-pruning considers Gaussians that exhibit high point disagreement in inaccurate positions and prunes them. (\romannumeral2) Pseudo-view co-regularization considers pixels that exhibit high rendering disagreement are inaccurately rendered and suppress the disagreement.
+          </p>
+            Results on LLFF, Mip-NeRF360, DTU, and Blender demonstrate that CoR-GS effectively regularizes the scene geometry, reconstructs the compact representations, and achieves state-of-the-art novel view synthesis quality under sparse training views.
+          <p>
+
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/O83v9Wrn3c4?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!-- / Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-centered">
+          <img src="./static/images/method.png">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Overview of our framework. (a) Stereo Geometry-Texture Alignment. We estimate and update stereo-view images to generate binocular priors for geometry supervision. (b) Pseudo-Feature Enhanced Geometry Consistency. To mitigate overfitting and enhance multi-view consistency, we introduce Pseudo-view Feature Consistency and Train-view Feature Alignment.
+            <!-- Overview of our framework. (a) We generate stereo pairs by rendering from the input camera and a virtual camera using 3DGS. (b) A pre-trained stereo network extracts initial depth priors. (c) Our core contribution: joint optimization of learnable depth priors and 3DGS, enhanced by local bundle adjustment for geometric and photometric consistency. (d) Final results showing high-quality mesh reconstruction, accurate depth/normal maps, and high-fidelity novel view synthesis. -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+
+        <h3 class="title is-3">Comparison</h3>
+        <div class="content has-text-justified">
+          <p>
+            Comarison with current SOTA baselines. Zoom in for better visualization.
+          </p>
+        </div>
+        <h5 class="title is-5">LLFF</h5>
+        <div class="content has-text-centered">
+          <img src="./static/images/llff.png">
+        </div>
+      </div>
+    </div> -->
+
+
+</section>
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@article{zhang2024cor,
+      title={CoR-GS: Sparse-View 3D Gaussian Splatting via Co-Regularization},
+      author={Zhang, Jiawei and Li, Jiahe and Yu, Xiaohan and Huang, Lei and Gu, Lin and Zheng, Jin and Bai, Xiao},
+      journal={arXiv preprint arXiv:2405.12110},
+      year={2024}
+    }</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2405.12110"  target="_blank"> 
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/jiaw-z/CoR-GS"  target="_blank" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is developed based on <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
