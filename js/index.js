@@ -39,7 +39,26 @@ $(document).ready(function() {
     }
 
 		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    // var carousels = bulmaCarousel.attach('.carousel', options);
+    bulmaCarousel.attach('.carousel', {
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000
+    });
+    
+    // 4个一屏
+    bulmaCarousel.attach('.carousel-4', {
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000
+    });
+    
 
     // Loop on each carousel initialized
     for(var i = 0; i < carousels.length; i++) {
