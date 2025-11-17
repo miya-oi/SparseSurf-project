@@ -225,20 +225,6 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           Recent advances in optimizing Gaussian Splatting for scene geometry have enabled efficient reconstruction of detailed surfaces from images. However, when input views are sparse, such optimization is prone to overfitting, leading to suboptimal reconstruction quality. Existing approaches address this challenge by employing flattened Gaussian primitives to better fit surface geometry, combined with depth regularization to alleviate geometric ambiguities under limited viewpoints. Nevertheless, the increased anisotropy inherent in flattened Gaussians exacerbates overfitting in sparse-view scenarios, hindering accurate surface fitting and degrading novel view synthesis performance. In this paper, we propose SparseSurf, a method that reconstructs more accurate and detailed surfaces while preserving high-quality novel view rendering. Our key insight is to introduce Stereo Geometry-Texture Alignment, which bridges rendering quality and geometry estimation, thereby jointly enhancing both surface reconstruction and view synthesis. In addition, we present a Pseudo-Feature Enhanced Geometry Consistency that enforces multi-view geometric consistency by incorporating both training and unseen views, effectively mitigating overfitting caused by sparse supervision. Extensive experiments on the DTU, BlendedMVS, and Mip-NeRF360 datasets demonstrate that our method achieves the state-of-the-art performance.
-          <!-- We present Eve3D, a novel framework for dense 3D reconstruction based on 3D Gaussian Splatting (3DGS). While most existing methods rely on imperfect priors derived from pre-trained vision models, Eve3D fully leverages these priors by jointly optimizing both them and the 3DGS backbone. This joint optimization creates a mutually reinforcing cycle: the priors enhance the quality of 3DGS, which in turn refines the priors, further improving the reconstruction. Additionally, Eve3D introduces a novel optimization step based on bundle adjustment, overcoming the limitations of the highly local supervision in standard 3DGS pipelines. Eve3D achieves state-of-the-art results in surface reconstruction and novel view synthesis on Tanks \& Temples, DTU, and Mip-NeRF360 datasets. while retaining fast convergence, highlighting an unprecedented trade-off between accuracy and speed. -->
-
-          <!-- <p>
-            3D Gaussian Splatting (3DGS) creates a radiance field consisting of 3D Gaussians to represent a scene. With sparse training views, 3DGS easily suffers from overfitting, negatively impacting the reconstruction quality.</p>
-          <p>
-            This paper introduces a new co-regularization perspective for improving sparse-view 3DGS. When training two 3D Gaussian radiance fields with the same sparse views of a scene, we observe that the two radiance fields exhibit \textit{point disagreement} and \textit{rendering disagreement} that can unsupervisedly predict reconstruction quality, stemming from the sampling implementation in densification. We further quantify the point disagreement and rendering disagreement by evaluating the registration between Gaussians' point representations and calculating differences in their rendered pixels. The empirical study demonstrates the negative correlation between the two disagreements and accurate reconstruction, which allows us to identify inaccurate reconstruction without accessing ground-truth information.
-          </p>
-          <p>
-            Based on the study, we propose CoR-GS, which identifies and suppresses inaccurate reconstruction based on the two disagreements: (\romannumeral1) Co-pruning considers Gaussians that exhibit high point disagreement in inaccurate positions and prunes them. (\romannumeral2) Pseudo-view co-regularization considers pixels that exhibit high rendering disagreement are inaccurately rendered and suppress the disagreement.
-          </p>
-            Results on LLFF, Mip-NeRF360, DTU, and Blender demonstrate that CoR-GS effectively regularizes the scene geometry, reconstructs the compact representations, and achieves state-of-the-art novel view synthesis quality under sparse training views.
-          <p>
-
-          </p> -->
         </div>
       </div>
     </div>
@@ -256,12 +242,12 @@
       </div>
     </div>
     <!-- / Paper video. -->
-  </div>
+  <!-- </div>
 </section>
 
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-desktop"> -->
 
     <!-- Method. -->
     <div class="columns is-centered has-text-centered">
@@ -279,26 +265,152 @@
         </div>
       </div>
     </div>
+  </div>
+<!-- </section> -->
 
-    <!-- Comparison. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
 
-        <h3 class="title is-3">Comparison</h3>
-        <div class="content has-text-justified">
-          <p>
-            Comarison with current SOTA baselines. Zoom in for better visualization.
-          </p>
+<h2 class="title is-4 is-centered has-text-centered">Reconstruction on DTU with 3 views</h2>
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel-4 results-carousel">       
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan24-c.mp4" type="video/mp4">
+          </video>
         </div>
-        <h5 class="title is-5">LLFF</h5>
-        <div class="content has-text-centered">
-          <img src="./static/images/llff.png">
+
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan55-c.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan65-c.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan69-c.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan83-c.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan97-c.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-dtu">
+          <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dtu/scan118-c.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
-    </div> -->
-
-
+    </div>
+  </div>
 </section>
+<section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel-4 results-carousel">
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan24.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan55.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan65.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan69.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan83.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan97.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-dtu">
+            <video poster="" id="dtu" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dtu/scan118.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Comparison. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+
+          <h3 class="title is-3">Comparisons</h3>
+          <!-- <div class="content has-text-justified">
+            <p>
+              Comparison with current SOTA 3DGS-based methods.
+            </p>
+          </div> -->
+          <!-- <h5 class="title is-5">LLFF</h5> -->
+          <h4 class="title is-4">More Accurate and Detailed Surface Reconstruction with Sparse Views</h4>
+          <div class="content has-text-centered">
+            <video id="replay-video" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/mipnerf360.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <!-- <h4 class="title is-4">Preserving Accurate Details and Delicate Structures</h3>
+          <div class="content has-text-centered">
+            <video id="replay-video" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/comparisons/bonsai_out.mp4" type="video/mp4">
+            </video>
+          </div> -->
+
+          <h4 class="title is-4">High-Quality Novel View Rendering with 3 Views on DTU</h4>
+          <div class="content has-text-centered">
+            <img src="./static/images/compare_dtu_nvs.png">
+          </div>
+
+          <h4 class="title is-4">High-Quality Novel View Rendering with 24 Views on Mip-NeRF360</h4>
+          <div class="content has-text-centered">
+            <img src="./static/images/compare_m360_nvs.png">
+          </div>
+
+        </div>
+      </div>
+
+<!-- </section> -->
 
 
 <!-- <section class="section" id="BibTeX">
